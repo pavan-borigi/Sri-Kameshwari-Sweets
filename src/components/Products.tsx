@@ -12,9 +12,7 @@ const Products = () => {
 
   const handleCategoryClick = (id: string) => {
     setTransitioning(true)
-    setTimeout(() => {
-      router.push(`/category/${id}`)
-    }, 1000)
+    router.push(`/category/${id}`)
   }
 
   return (
@@ -50,7 +48,7 @@ const Products = () => {
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
-          transition: 'opacity 0.8s ease-in-out',
+          transition: 'opacity 0.4s ease-in-out',
           opacity: transitioning ? 1 : 0,
           pointerEvents: transitioning ? 'all' : 'none',
           visibility: transitioning ? 'visible' : 'hidden',

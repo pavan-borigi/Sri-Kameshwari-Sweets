@@ -1,6 +1,7 @@
 'use client'
 import React, { useEffect } from 'react'
 import Link from 'next/link'
+import Image from 'next/image'
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
 import { categories, type CategoryId } from '../data/products'
@@ -68,13 +69,13 @@ const CategoryPage: React.FC<CategoryPageProps> = ({ id }) => {
               onMouseOut={e => e.currentTarget.style.transform = 'translateY(0)'}
               >
                 <div style={{ position: 'relative', width: '100%', paddingBottom: '100%', backgroundColor: '#f0eada' }}>
-                  <img
+                   <Image
                     src={item.image}
                     alt={item.name}
+                    fill
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                    priority={id === 'sweets'}
                     style={{
-                      position: 'absolute',
-                      top: 0, left: 0,
-                      width: '100%', height: '100%',
                       objectFit: 'cover'
                     }}
                   />
