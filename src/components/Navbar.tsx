@@ -1,3 +1,4 @@
+'use client'
 import React, { useState, useEffect } from 'react'
 import { Phone, Menu, X } from 'lucide-react'
 
@@ -109,12 +110,6 @@ const Navbar: React.FC = () => {
               {link}
             </a>
           ))}
-          <a
-            href="tel:+918074054803"
-            style={{ display: 'block', marginTop: '1rem', backgroundColor: '#C9961F', color: '#fff', padding: '0.75rem', borderRadius: '8px', textAlign: 'center', textDecoration: 'none', fontWeight: 700 }}
-          >
-            📞 099635 59190 / 8074054803
-          </a>
         </div>
       )}
 

@@ -1,3 +1,4 @@
+'use client'
 import React from 'react'
 import { Star, Quote } from 'lucide-react'
 
@@ -122,7 +123,7 @@ const Reviews: React.FC = () => {
               boxShadow: '0 4px 20px rgba(201,150,31,0.35)',
             }}
           >
-            📞 Call to Order — 099635 59190 / 8074054803
+            📞 Call to Order — 99635 59190 / 8074054803
           </a>
         </div>
       </div>

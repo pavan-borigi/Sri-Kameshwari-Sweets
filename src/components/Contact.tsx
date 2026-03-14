@@ -1,3 +1,4 @@
+'use client'
 import React from 'react'
 import { MapPin, Phone, Clock, Instagram } from 'lucide-react'
 
@@ -38,7 +39,7 @@ const Contact: React.FC = () => {
               {
                 icon: <Phone size={22} />,
                 label: 'Phone',
-                value: '099635 59190 / 8074054803',
+                value: '99635 59190 / 8074054803',
                 link: 'tel:+918074054803',
                 linkText: 'Call Now →',
               },
@@ -103,7 +104,7 @@ const Contact: React.FC = () => {
             }}>
               <div>
                 <div style={{ color: 'rgba(255,255,255,0.9)', fontSize: '0.85rem' }}>Place your order or enquiry</div>
-                <div style={{ color: '#fff', fontFamily: 'Playfair Display, serif', fontSize: '1.25rem', fontWeight: 700 }}>099635 59190 / 8074054803</div>
+                <div style={{ color: '#fff', fontFamily: 'Playfair Display, serif', fontSize: '1.25rem', fontWeight: 700 }}>99635 59190 / 8074054803</div>
               </div>
               <a
                 href="tel:+918074054803"

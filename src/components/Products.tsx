@@ -1,9 +1,21 @@
-import { Link } from 'react-router-dom'
+'use client'
+import React, { useState } from 'react'
+import { useRouter } from 'next/navigation'
+import Link from 'next/link'
 import { ChevronRight } from 'lucide-react'
 import { categories } from '../data/products'
 
 const Products = () => {
+  const router = useRouter()
+  const [transitioning, setTransitioning] = useState(false)
   const categoryList = Object.values(categories)
+
+  const handleCategoryClick = (id: string) => {
+    setTransitioning(true)
+    setTimeout(() => {
+      router.push(`/category/${id}`)
+    }, 1000)
+  }
 
   return (
     <section id="menu" style={{ backgroundColor: '#FFFDF7', position: 'relative', padding: '5rem 1.5rem', overflow: 'hidden' }}>
@@ -29,6 +41,26 @@ const Products = () => {
       }} />
 
       <div style={{ maxWidth: '1200px', margin: '0 auto', position: 'relative', zIndex: 2 }}>
+        {/* Transition Overlay */}
+        <div style={{
+          position: 'fixed',
+          inset: 0,
+          backgroundColor: '#3D0A0A',
+          zIndex: 9999,
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          transition: 'opacity 0.8s ease-in-out',
+          opacity: transitioning ? 1 : 0,
+          pointerEvents: transitioning ? 'all' : 'none',
+          visibility: transitioning ? 'visible' : 'hidden',
+        }}>
+          <div style={{ textAlign: 'center' }}>
+            <h2 style={{ fontFamily: 'Playfair Display, serif', color: '#C9961F', fontSize: '2.5rem', marginBottom: '1rem' }}>Sri Kameswari</h2>
+            <div className="loader"></div>
+          </div>
+        </div>
+
         {/* Heading */}
         <div style={{ textAlign: 'center', marginBottom: '4rem' }}>
           <span style={{
@@ -56,7 +88,12 @@ const Products = () => {
           display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '2rem',
         }}>
           {categoryList.map((cat) => (
-            <Link key={cat.id} to={`/category/${cat.id}`} style={{ textDecoration: 'none' }} className="category-card">
+            <div 
+              key={cat.id} 
+              onClick={() => handleCategoryClick(cat.id)} 
+              style={{ textDecoration: 'none', cursor: 'pointer' }} 
+              className="category-card"
+            >
               <div style={{
                 backgroundColor: '#fff', borderRadius: '20px', overflow: 'hidden',
                 boxShadow: '0 10px 40px rgba(0,0,0,0.06)', transition: 'transform 0.3s, box-shadow 0.3s',
@@ -101,7 +138,7 @@ const Products = () => {
                   </div>
                 </div>
               </div>
-            </Link>
+            </div>
           ))}
         </div>
 
@@ -156,6 +193,22 @@ const Products = () => {
           @keyframes glow {
             from { transform: translateX(0); filter: drop-shadow(0 0 2px rgba(201,150,31,0.4)); }
             to { transform: translateX(8px); filter: drop-shadow(0 0 10px rgba(201,150,31,0.8)); }
+          }
+          .loader {
+            width: 48px;
+            height: 48px;
+            border: 5px solid #C9961F;
+            border-bottom-color: transparent;
+            border-radius: 50%;
+            display: inline-block;
+            box-sizing: border-box;
+            animation: rotation 1s linear infinite;
+            margin-top: 2rem;
+          }
+
+          @keyframes rotation {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
           }
         }
         @media (min-width: 769px) {

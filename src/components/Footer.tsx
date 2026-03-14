@@ -1,8 +1,9 @@
+'use client'
 import React from 'react'
 import { MapPin, Phone, Instagram } from 'lucide-react'
 
 const Footer: React.FC = () => {
-  const year = 2025
+  const year = 2026
 
   return (
     <footer style={{ backgroundColor: '#0A0202', color: '#D4AF7A', fontFamily: 'Lato, sans-serif' }}>
@@ -91,7 +92,7 @@ const Footer: React.FC = () => {
           <div style={{ display: 'flex', gap: '0.75rem', alignItems: 'center', marginBottom: '1.5rem' }}>
             <Phone size={16} style={{ color: '#C9961F', flexShrink: 0 }} />
             <a href="tel:+918074054803" style={{ color: '#FDF6E3', textDecoration: 'none', fontWeight: 600, fontSize: '0.95rem' }}>
-              099635 59190 / 8074054803
+              99635 59190 / 8074054803
             </a>
           </div>
           <a
@@ -113,7 +114,7 @@ const Footer: React.FC = () => {
           © {year} Sri Kameswari Sweets, Palasa. All rights reserved.
         </p>
         <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-          <span style={{ color: '#A08060', fontSize: '0.82rem' }}>App Developed By Pavan Borigi</span>
+          <span style={{ color: '#A08060', fontSize: '0.82rem' }}>Developed By Pavan Borigi</span>
           <a
             href="https://www.instagram.com/acc_pavan?igsh=MWFueG11YjRlM3JscA=="
             target="_blank"

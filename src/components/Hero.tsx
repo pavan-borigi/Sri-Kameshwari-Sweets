@@ -1,3 +1,4 @@
+'use client'
 import React from 'react'
 import { Star, MapPin, Phone, ChevronDown } from 'lucide-react'
 
@@ -114,7 +115,7 @@ const Hero: React.FC = () => {
               onMouseOver={e => { (e.currentTarget as HTMLElement).style.borderColor = '#C9961F'; (e.currentTarget as HTMLElement).style.color = '#C9961F' }}
               onMouseOut={e => { (e.currentTarget as HTMLElement).style.borderColor = 'rgba(253,246,227,0.4)'; (e.currentTarget as HTMLElement).style.color = '#FDF6E3' }}
             >
-              <Phone size={16} /> 099635 59190 / 8074054803
+              <Phone size={16} /> 99635 59190 / 8074054803
             </a>
           </div>
 
