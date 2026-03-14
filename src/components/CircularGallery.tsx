@@ -329,8 +329,8 @@ class App {
   }
   createGeometry() {
     this.planeGeometry = new Plane(this.gl, {
-      heightSegments: 50,
-      widthSegments: 100
+      heightSegments: 16,
+      widthSegments: 32
     });
   }
   createMedias(items, bend = 1, textColor, borderRadius, font) {
@@ -410,8 +410,6 @@ class App {
     }
     this.renderer.render({ scene: this.scene, camera: this.camera });
     this.scroll.last = this.scroll.current;
-    // this.raf = window.requestAnimationFrame(this.update.bind(this));
-    // bind correctly
     this.raf = window.requestAnimationFrame(() => this.update());
   }
   addEventListeners() {
@@ -460,10 +458,29 @@ export default function CircularGallery({
   
   useEffect(() => {
     let app = null;
-    if (containerRef.current) {
+    let isDestroyed = false;
+
+    // Preload images for a smoother start
+    const preloadImages = async () => {
+      const promises = items.map(item => {
+        return new Promise((resolve) => {
+          const img = new Image();
+          img.src = item.image;
+          img.onload = resolve;
+          img.onerror = resolve;
+        });
+      });
+      await Promise.all(promises);
+      
+      if (!isDestroyed && containerRef.current) {
         app = new App(containerRef.current, { items, bend, textColor, borderRadius, font, scrollSpeed, scrollEase });
-    }
+      }
+    };
+
+    preloadImages();
+
     return () => {
+      isDestroyed = true;
       if (app) app.destroy();
     };
   }, [items, bend, textColor, borderRadius, font, scrollSpeed, scrollEase]);

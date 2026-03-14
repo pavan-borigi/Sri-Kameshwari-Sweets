@@ -1,20 +1,7 @@
-import React, { useEffect, useRef } from 'react'
+import React from 'react'
 import { Star, MapPin, Phone, ChevronDown } from 'lucide-react'
 
 const Hero: React.FC = () => {
-  const imgRef = useRef<HTMLImageElement>(null)
-
-  useEffect(() => {
-    const img = imgRef.current
-    if (!img) return
-    const onScroll = () => {
-      const scrollY = window.scrollY
-      img.style.transform = `translateY(${scrollY * 0.3}px)`
-    }
-    window.addEventListener('scroll', onScroll, { passive: true })
-    return () => window.removeEventListener('scroll', onScroll)
-  }, [])
-
   return (
     <section
       id="home"
@@ -148,7 +135,6 @@ const Hero: React.FC = () => {
               background: 'radial-gradient(ellipse, rgba(201,150,31,0.05) 0%, transparent 70%)',
             }} />
             <img
-              ref={imgRef}
               src="/newshopfront.jpeg"
               alt="Sri Kameswari Sweets - Storefront"
               style={{
